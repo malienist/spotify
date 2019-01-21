@@ -1,1 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+@mixin light($size) {
+    font: 300 #{$size}px 'Opens Sans';
+}
+@mixin reg($size) {
+    font: 400 #{$size}px 'Opens Sans';
+}
+@mixin bold($size) {
+    font: 700 #{$size}px 'Opens Sans';
+}
+@mixin tl($top, $left){
+    position: absolute;
+    top: $top;
+    left: $left;
+}
+@mixin transition{
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+}
+@mixin svg($svg){
+    background-image: url('./assets/images/#{$svg}.svg');
+    background-repeat: no-repeat;
+}
+@mixin jpg($jpg){
+    background-image: url('./assets/images/#{$jpg}.jpg');
+    background-repeat: no-repeat;
+}
+@mixin png($png){
+    background-image: url('./assets/images/#{$png}.png');
+    background-repeat: no-repeat;
+}
+body{
+    padding: 30px;
+}
+button, a{
+    @include transition;
+}
+.search-container{
+    input[type="text"], button{
+        height: 38px;
+    }
+    input[type="text"]{
+        width: 300px;
+        padding-left: 10px;
+    }
+    button{
+        @include reg(14);
+        background: #333;
+        color: #fff;
+        border: 1px solid transparent;
+        text-transform: uppercase;
+        width: 100px;
+        border-left: none;
+
+        &:hover{
+            background: transparent;
+            border-color: #333333;
+            color: #333333;
+        }
+    }
+}
+.logo{
+    position: relative;
+    padding-left: 55px;
+    margin: 0 0 20px;
+
+    &:before{
+        @include tl(50%, -5px);
+        @include svg(spotify);
+        width: 50px;
+        height: 50px;
+        background-size: 40px;
+        background-position: center;
+        content: '';
+        margin-top: -25px;
+    }
+}

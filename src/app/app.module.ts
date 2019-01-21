@@ -1,14 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
+//components
 import { AppComponent } from './app.component';
+import { SearchComponent } from './search/search.component';
+import { AlbumComponent } from './album/album.component';
+import { ArtistComponent } from './artist/artist.component';
+import { TrackComponent } from './track/track.component';
+
+//routes
+const routes: Routes = [
+    { path: '', component: AppComponent },
+    { path: 'search', component: SearchComponent },
+];
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        SearchComponent,
+        AlbumComponent,
+        ArtistComponent,
+        TrackComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        RouterModule.forRoot(routes),
     ],
     providers: [],
     bootstrap: [AppComponent]
