@@ -20,14 +20,15 @@ export class SpotifyService {
 		//add generated api key from https://developer.spotify.com/console/get-search-item/
 		const apiKey = '';
 		const headers: HttpHeaders = new HttpHeaders({
-			// 'Content-Type': 'application/json',
 			Authorization: `Bearer ${apiKey}`
 		});
-		return this.http
-		.get(queryURL, {
+		return this.http.get(queryURL, {
 			headers: headers
 		}).pipe(
-			map(res => console.log(res))
+			map((res: any) => {
+				res;
+				console.log('spotify.service.query() - ', res);
+			})
 		);
 	}
 
