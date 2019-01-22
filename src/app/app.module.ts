@@ -10,6 +10,10 @@ import { SearchComponent } from './search/search.component';
 import { AlbumComponent } from './album/album.component';
 import { ArtistComponent } from './artist/artist.component';
 import { TrackComponent } from './track/track.component';
+import { LoginComponent } from './login/login.component';
+
+//services
+import { AUTH_PROVIDERS } from './auth.service';
 
 //routes
 const routes: Routes = [
@@ -23,7 +27,8 @@ const routes: Routes = [
         SearchComponent,
         AlbumComponent,
         ArtistComponent,
-        TrackComponent
+        TrackComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -31,7 +36,9 @@ const routes: Routes = [
         FormsModule,
         RouterModule.forRoot(routes),
     ],
-    providers: [],
+    providers: [
+		AUTH_PROVIDERS
+	],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

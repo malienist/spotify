@@ -1,7 +1,9 @@
-<div class="search-container">
+<div>
     <h1 class="logo">Spotify search</h1>
-    <input type="text" [value]="query" placeholder="Search artist, album, track" #newquery (keydown.enter)="search(newquery.value)">
-    <button (click)="submit(newquery.value)">Search</button>
+    <div class="search-box">
+		<input type="text" [value]="query" placeholder="Search artist, album, track" #newquery (keydown.enter)="search(newquery.value)">
+    	<button (click)="submit(newquery.value)">Search</button>
+	</div>
 
     <div *ngIf="results">
         <div *ngIf="!results.length">
