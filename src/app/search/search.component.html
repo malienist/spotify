@@ -4,29 +4,31 @@
 		<input type="text" [value]="query" placeholder="Search artist, album, track" #newquery (keydown.enter)="search(newquery.value)">
     	<button (click)="submit(newquery.value)">Search</button>
 	</div>
-
     <div *ngIf="results">
-        <div *ngIf="!results.length">
-            No results found for {{ query }}
+        <div *ngIf="!results.length" class="no-data">
+            No results found for <strong>{{ query }}</strong>
         </div>
         <div *ngIf="results.length">
-            <h2>Results</h2>
-            <div class="row">
-                <div class="col-sm-6" *ngFor="let t of results">
-                    <div class="thumbnail">
-                        <div class="content">
-                            <img src="{{ t.album.images[0].url }}" alt="" class="img-responsive">
-                            <div class="caption">
-                                <h3><a [routerLink]="['/artists', t.artists[0].id]">{{ t.artists[0].name }}</a></h3>
-                                <p><a [routerLink]="['/tracks', t.id]">{{ t.name }}</a></p>
-                            </div>
-                            <div class="attribution">
-                                <h4><a [routerLink]="['/albums', t.album.id]">{{ t.album.name }}</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h3>Results</h3>
+			<div class="row">
+				<ng-container *ngFor="let t of results; let _in = index;">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+						<div class="thumbnail">
+							<div class="content">
+								<img src="{{ t.album.images[0].url }}" alt="" class="img-responsive full-width">
+								<div class="inner">
+									<div class="caption">
+										<a title="{{ t.artists[0].name }}" [routerLink]="['/artists', t.artists[0].id]">Artist: <strong>{{ t.artists[0].name }}</strong></a>
+										<a title="{{ t.album.name }}" [routerLink]="['/albums', t.album.id]">Album: <strong>{{ t.album.name }}</strong></a>
+										<p><a title="{{ t.name }}" [routerLink]="['/tracks', t.id]">Track: <strong>{{ t.name }}</strong></a></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="divider" *ngIf="((_in + 1) % 6) == 0"></div>
+				</ng-container>
+			</div>
         </div>
     </div>
 </div>

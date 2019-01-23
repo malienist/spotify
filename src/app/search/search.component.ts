@@ -27,17 +27,17 @@ export class SearchComponent implements OnInit {
             return;
         }
         this.spotifyService.searchTrack(this.query).subscribe((res: any) => {
-			console.log(`search.component.search() - ${res}`);
+			// console.log(`search.component.search() - ${res}`);
             this.renderResults(res);
         });
     }
 
     renderResults(res: any): void {
-		console.log(`rendering results - ${res}`);
+		// console.log(`rendering results - ${res}`);
         this.results = null;
         if(res && res.tracks && res.tracks.items) {
             this.results = res.tracks.items;
-			console.log(`results rendered - ${this.results}`);
+			// console.log(`results rendered - ${this.results}`);
         }
     }
 

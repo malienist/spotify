@@ -7,28 +7,29 @@ import { RouterModule, Routes } from '@angular/router';
 //components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { AlbumComponent } from './album/album.component';
 import { ArtistComponent } from './artist/artist.component';
+import { AlbumComponent } from './album/album.component';
 import { TrackComponent } from './track/track.component';
-import { LoginComponent } from './login/login.component';
 
 //services
-import { AUTH_PROVIDERS } from './auth.service';
+
 
 //routes
 const routes: Routes = [
     { path: '', component: AppComponent },
     { path: 'search', component: SearchComponent },
+	{ path: 'artists/:id', component: ArtistComponent },
+	{ path: 'albums/:id', component: AlbumComponent },
+	{ path: 'tracks/:id', component: TrackComponent },
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
         SearchComponent,
+		ArtistComponent,
         AlbumComponent,
-        ArtistComponent,
         TrackComponent,
-        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -37,7 +38,7 @@ const routes: Routes = [
         RouterModule.forRoot(routes),
     ],
     providers: [
-		AUTH_PROVIDERS
+		
 	],
     bootstrap: [AppComponent]
 })

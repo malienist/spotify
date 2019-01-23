@@ -18,7 +18,7 @@ export class SpotifyService {
 			queryURL = `${queryURL}?${params.join('&')}`;
 		}
 		//add generated api key from https://developer.spotify.com/console/get-search-item/
-		const apiKey = '';
+		const apiKey = 'BQCGRGdaNGGGkMdpvrveWfPW06U_xDWhmfQJFw8J3DnuzXzZZ3ArCYVLlY955yKu5Ss2blKns6JmhRqHBbSU7mVCulEEtT5D4eyQ6HzPDVg1WfkjSmpVepcANHupUftyzuhQ2jQwrLKjbp_1sTyXLh6m0HQqIG5QIK-tLw';
 		const headers: HttpHeaders = new HttpHeaders({
 			Authorization: `Bearer ${apiKey}`
 		});
@@ -26,8 +26,8 @@ export class SpotifyService {
 			headers: headers
 		}).pipe(
 			map((res: any) => {
-				res;
 				console.log('spotify.service.query() - ', res);
+				return res;
 			})
 		);
 	}
@@ -45,7 +45,7 @@ export class SpotifyService {
 		return this.search(query, 'track');
     }
 
-	getTrack(id: string): Observable<any> {
+	getTrack(id: string): Observable<any[]> {
 		return this.query(`/tracks/${id}`);
 	}
 }
