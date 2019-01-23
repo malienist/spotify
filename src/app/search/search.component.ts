@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../spotify.service';
 
@@ -8,10 +8,16 @@ import { SpotifyService } from '../spotify.service';
     styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+	private windowWidth: any;
+	@HostListener('window: resize', ['$event'])
+	onResize(event) {
+		this.windowWidth = window.innerWidth;
+	}
     query: string;
     results: Object;
 
     constructor(private spotifyService: SpotifyService, private router: Router, private route: ActivatedRoute) { 
+		this.windowWidth = window.innerWidth;
         this.route.queryParams.subscribe(params => { 
             this.query = params['query'] || ''; 
         });
